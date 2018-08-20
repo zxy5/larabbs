@@ -32,15 +32,28 @@ class UsersController extends Controller
             ->setMeta([
                 'access_token' => \Auth::guard('api')->fromUser($user),
                 'token_type' => 'Bearer',
-                'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+                'expires_in' => \Auth::guard('api')->factory()->getTTL() * 3600
             ])
             ->setStatusCode(201);
     }
 
     //获取个人信息
     public function me(){
-        return 'u';
-        return $this->response->item($this->user(), new UserTransformer());
+//        return 'aaa';
+        return $this->response->item($this->user, new UserTransformer());
+    }
+
+    //编辑个人资料
+    public function update(UserRequest $request){
+        $user = $this->user();
+        $attributes = $request->only(['name','email','introduction']);
+        if($request->avatar_image_id){
+            $image = Image::find($request->id);
+            $attributes['avatar'] = $image->path;
+
+        }
+        $user->update($attributes);
+        return $this->response->item($user,new UserTransformer());
     }
 
 
