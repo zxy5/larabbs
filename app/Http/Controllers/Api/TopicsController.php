@@ -59,4 +59,8 @@ class TopicsController extends Controller
         $topic->delete();
         return $this->response->noContent();
     }
+    //单个话题详情
+    public function show(Topic $topic){
+        return $this->response->item($topic, new TopicTransformer());
+    }
 }
