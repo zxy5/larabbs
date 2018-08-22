@@ -2,18 +2,13 @@
 
 namespace App\Http\Requests\Api;
 
-
-class CaptchaRequest extends FormRequest
+class ReplyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-//    public function authorize()
-//    {
-//        return true;
-//    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +19,7 @@ class CaptchaRequest extends FormRequest
     {
         return [
             //
-            'phone' => 'required|regex:/^1[34578]\d{9}$/|unique:users',
+            'contents' => 'required|min:2',
         ];
     }
 }

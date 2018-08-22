@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
-use Dingo\Api\Http\FormRequest;
+//use Dingo\Api\Http\FormRequest;
 
 class AuthorizationRequest extends FormRequest
 {
@@ -11,10 +11,10 @@ class AuthorizationRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
+//    public function authorize()
+//    {
+//        return true;
+//    }
 
     /**
      * Get the validation rules that apply to the request.

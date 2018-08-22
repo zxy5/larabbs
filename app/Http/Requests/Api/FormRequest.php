@@ -2,18 +2,19 @@
 
 namespace App\Http\Requests\Api;
 
+use Dingo\Api\Http\FormRequest as BaseFormRequest;
 
-class CaptchaRequest extends FormRequest
+class FormRequest extends BaseFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-//    public function authorize()
-//    {
-//        return true;
-//    }
+    public function authorize()
+    {
+        return true;
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +25,6 @@ class CaptchaRequest extends FormRequest
     {
         return [
             //
-            'phone' => 'required|regex:/^1[34578]\d{9}$/|unique:users',
         ];
     }
 }
