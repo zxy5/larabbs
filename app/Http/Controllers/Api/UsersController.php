@@ -46,7 +46,7 @@ class UsersController extends Controller
     //编辑个人资料
     public function update(UserRequest $request){
         $user = $this->user();
-        $attributes = $request->only(['name','email','introduction']);
+        $attributes = $request->only(['name','email','introduction','registration_id']);
         if($request->avatar_image_id){
             $image = Image::find($request->id);
             $attributes['avatar'] = $image->path;

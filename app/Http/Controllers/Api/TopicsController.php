@@ -40,6 +40,7 @@ class TopicsController extends Controller
     }
     //发布话题
     public function store(TopicRequest $request,Topic $topic){
+//        return $this->errorResponse(403,'您还没有通过认证',1003);
         $topic->fill($request->all());
         $topic->user_id = $this->user()->id;
         $topic->save();
